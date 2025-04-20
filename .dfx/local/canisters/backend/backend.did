@@ -1,0 +1,24 @@
+type Time = int;
+type Proposal = 
+ record {
+   approvals: vec principal;
+   id: nat;
+   proposedAt: Time;
+   proposer: principal;
+   "text": text;
+   validatorsAtCreation: nat;
+ };
+type Principle = 
+ record {
+   carvedAt: Time;
+   id: nat;
+   proposer: principal;
+   "text": text;
+ };
+service : {
+  approve: (nat) -> ();
+  isValidator: (principal) -> (bool) query;
+  listPrinciples: () -> (vec Principle) query;
+  listProposals: () -> (vec Proposal) query;
+  propose: (text) -> (nat);
+}

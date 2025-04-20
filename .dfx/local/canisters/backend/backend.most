@@ -1,0 +1,18 @@
+// Version: 1.0.0
+type Principle =
+  {carvedAt : Time; id : Nat; proposer : Principal; text : Text};
+type Proposal =
+  {
+    approvals : [Principal];
+    id : Nat;
+    proposedAt : Time;
+    proposer : Principal;
+    text : Text;
+    validatorsAtCreation : Nat
+  };
+type Time = Int;
+actor {
+  stable var principles : [Principle];
+  stable var proposals : [Proposal];
+  stable var validators : [Principal]
+};
